@@ -1,9 +1,11 @@
 #include<vector>
 #include<iostream>
 #include<unordered_map>
+#include<exception>
 
 class Solution {
 public:
+	// find the index of two numbers in array that will sum to target
     std::vector<int> twoSum(std::vector<int>& nums, int target) {
         for (int i = 0; i < nums.size(); i++) {
             for (int j = 0; j < nums.size(); j++) {
