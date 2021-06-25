@@ -8,12 +8,14 @@
 ### Syntax Errors
 * forgot ";" in cpp
 * forgot how to move in char array w/ pointers (--end) and how to access value (*end)
+* if using something from std library in c++ use std::, don't do using namespace std. but, don't forget std::.
+
 
 ### Interview Tips
 * your filler is "uh". Cut it out. Take more breaths and thought time.
 * don't need to talk 100% of time when solving
 * think more
-* be super careful when running examples. run every line in your head exactly. As missing a bug in unacceptable.
+* be super careful when running examples. run every line in your head exactly. As missing a bug is unacceptable.
 * Plan all code in design before start typing
 * ask questions after about what company does. What they work on. Release process. Day to day. Ect.
 * practice to self on zoom
