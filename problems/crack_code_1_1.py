@@ -1,3 +1,4 @@
+# implement an algo to determine if a string has all unique characters. what if you can't use add'tl data structures?
 # any constraints on size of string?
 
 # if data structures, hash table, loop through once and add. or, set and count len.

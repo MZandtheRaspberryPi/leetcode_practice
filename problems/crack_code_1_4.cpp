@@ -15,7 +15,7 @@ char chr_arr2[21] = {' ', 'M', 'r', ' ', 'J', 'o', 'h', 'n', ' ', 'S', 'm', 'i',
 // go over array in reverse, put first char at new end and keep going back from there
 // replacing spaces till at start
 
-// time complexity here is n^2, as loop over once to find end, loop over a second time to set values
+// time complexity here is n, as loop over once to find end, loop over a second time to set values
 // space complexity is O(1), constant, as we store a couple characters and a bool
 void replace_spaces(char* str) {
 	char* end = str;
@@ -62,7 +62,7 @@ void replace_spaces(char* str) {
 }
 
 
-// this O(n^2) time complexity, O(1) space complexity
+// this O(n) time complexity, O(1) space complexity
 void replaceSpacesOptimal(char str[], int length) {
 	int spaceCount = 0;
 	int newLength = 0;
