@@ -179,6 +179,37 @@ void printMatrix(std::vector<std::vector<int>> matrix)
 }
 
 
+template<typename T>
+bool searchMatrixOptimal(std::vector<std::vector<T>> matrix, T search_val)
+{
+
+  // if start of a column is greater than x, x must be to the right of that column
+  // if end of a row is less than x, x must be below that row.
+  std::pair<T, T> result;
+  result.first = 0;
+  result.second = matrix[0].size() - 1;
+  
+  while (result.first < matrix.size() && result.second >= 0)
+  {
+    if (matrix[result.first][result.second] == search_val)
+    {
+      return true;
+    }
+    else if (matrix[result.first][result.second] > search_val)
+    {
+      result.second --;
+    }
+    else
+    {
+      result.first++;
+    }
+  }
+
+  return false;
+
+}
+
+
 int main()
 {
   std::vector<std::vector<int>> matrix;
@@ -202,5 +233,8 @@ int main()
 
   result = searchMatrix(matrix, 74);
   printf("found 74 at %d, %d\n", result.first, result.second);
+
+  bool found = searchMatrixOptimal(matrix, 23);
+  printf("found %d\n", found);
 
 }
