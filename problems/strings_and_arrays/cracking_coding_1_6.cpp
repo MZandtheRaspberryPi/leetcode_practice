@@ -23,13 +23,7 @@ u v w x y
 if we have a four matrix, we have 2 square lines to do. 
 if we have a5 matrix, have 2 square lines to do.
 
-so for i = 0, i < n / 2.
-
-
-so, col_index, row_index. col_index is what index inside a column. set it to n - 1. row_index inside a row which one we switching out. set it to 0
-
-while (
-
+time complexity O(N), storage complexity O(1)
 */
 #include <stdio.h>
 #include <vector>
