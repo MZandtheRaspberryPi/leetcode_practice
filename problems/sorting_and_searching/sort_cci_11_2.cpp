@@ -5,6 +5,8 @@ write a method to sort an array of strings so that all the anagrams are next to 
 // end idea
 // sort each string in array
 // then sort the array using comparison function of std::string.compare() but return bool
+// time compexity depends on sort algorithm used. O(Nlogn) likely
+// storage compexity depends on sort algorithm used. O(N) for merge sort.
 
 // alternative idea
 // make hash table where each key is anagram, value is vector of permutations

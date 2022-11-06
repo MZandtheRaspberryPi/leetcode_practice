@@ -54,7 +54,7 @@ int main()
   sort(c, 4, d);
   for (int i = 0; i < c.size(); i++)
   {
-	printf("%d\n", c[i]);  
+	printf("%d\n", c[i]);
   }
   
   printf("fin.");
