@@ -1,157 +1,66 @@
 /*
-Implement a function to check if a binary tree is a binary search tree.
+write algo to find next node in order
+successor of given node in binary tree.
+assume node has parent link.
 
-Use DFS. recursive function, returns bool.
 
-if root is nullptr return true.
+so if given a node we've just visited, assuming its the current node ( in order traversal is left current right) then we need to go down right and then left all the way and visit that.
 
-if root->left is not nullptr, confirm it is less or equal to data. if not, return false.
-if root->right is not nullptr, confirm it is greater than data. if not, return false.
-success = visit left.
-if not sucess return false.
-success &= visit right.
-return success.
 
-time complexity in worst case is O(N).
-storage is O(logn) to store recursive calls in the stack.
+and its left of parent, return parent.
+if its right we need to go up check the oarents parent. and while our parent is the right of the our parents parent, go up. when we get to the left, return that node.
 
-feedback missed that nodes to left of root all have to be smaller.
-even if a branch right below. so this solution misses some cases.
-
-either, use in order traversal, left, root, right, and add to array.
-then go through array and check if sorted.
-
-or keep track of previous and compare current to previous.
-
-or, recurse through checking if node is between expected range.
-min starts as int min. max starts as int max.
-when go left update max to root. when go right update min to root.
-
+f we dont reach that, ie, right is totally exhausted, then we need to return nullptr
 
 */
 
-#include <cmath>
-#include <vector>
 #include <stdio.h>
 
-const int int_max = std::pow(2, 31) - 1;
-const int int_min = std::pow(2, 31) * -1;
-
-struct Node {
-  int data;
-  Node *left;
-  Node *right;
+struct Node
+{
+    int data;
+    Node* left;
+    Node* right;
+    Node* parent;
 };
 
-bool isBinarySearchTree(Node* root)
+Node* findNextInOrderNode(Node* visited_node)
 {
-	if (root != nullptr)
-	{
-		bool success = true;
-		if (root->left != nullptr)
-		{
-			success &= (root->data >= root->left->data);
-			if (!success) return false;
-			success &= isBinarySearchTree(root->left);
-			if (!success) return false;
-		}
-		
-		if (root->right != nullptr)
-		{
-			success &= (root->data < root->right->data);
-			if (!success) return false;
-			success &= isBinarySearchTree(root->right);
-			if (!success) return false;
-		}
-		return success;		
-	}
-	else
-	{
-		return true;
-	}
-	
+    if (visited_node == nullptr || visited_node->parent == nullptr)
+    {
+        return nullptr;
+    }
+    
+    if (visited_node->parent->left == visited_node)
+    {
+        return visited_node->parent;
+    }
+    else (visited_node->parent->right == visited_node)
+    {
+        return findNextInOrderNode(visited_node->parent);
+    }
+    
 }
 
-bool isBinSearchTreeOptimal(Node* root, int min, int max)
+int main()
 {
-	if (root == nullptr) return true;
-	
-	if (root->data <= min || root->data > max) return false;
-	
-	if (!isBinSearchTreeOptimal(root->left, min, root->data) ||
-	    !isBinSearchTreeOptimal(root->right, root->data, max))
-		{
-		return false;
-	}
-
-  return true;
-}
-
-int main() {
-
-  std::vector<Node *> created_nodes;
-
-  for (int i = 0; i < 10; i++) {
-    Node *new_node = new Node{};
-    new_node->data = i;
-    created_nodes.push_back(new_node);
-  }
-
-  Node *root = created_nodes[0];
-  root->left = created_nodes[1];
-  root->right = created_nodes[2];
-  root->left->left = created_nodes[3];
-  root->left->right = created_nodes[4];
-	
-	bool is_bin_search_tree = isBinarySearchTree(root);
-	printf("first config isBinarySearchTree %d\n", is_bin_search_tree);
-
-  for (int i = 0; i < created_nodes.size(); i++) {
-    delete created_nodes[i];
-  }
-	
-	created_nodes.clear();
-	
-	for (int i = 0; i < 10; i++) {
-    Node *new_node = new Node{};
-    new_node->data = i;
-    created_nodes.push_back(new_node);
-  }
-
-  root = created_nodes[4];
-	root->left = created_nodes[3];
-	root->right = created_nodes[5];
-	root->left->left = created_nodes[2];
-	root->left->left->left = created_nodes[1];
-	root->left->right = created_nodes[6];
-	
-	is_bin_search_tree = isBinSearchTreeOptimal(root, int_min, int_max);
-	printf("second config isBinarySearchTree %d\n", is_bin_search_tree);
-
-  for (int i = 0; i < created_nodes.size(); i++) {
-    delete created_nodes[i];
-  }
-	
-	created_nodes.clear();
-	
-	for (int i = 0; i < 10; i++) {
-    Node *new_node = new Node{};
-    new_node->data = i;
-    created_nodes.push_back(new_node);
-  }
-	
-	root = created_nodes[4];
-	root->left = created_nodes[3];
-	root->right = created_nodes[5];
-	root->left->left = created_nodes[2];
-	root->left->left->left = created_nodes[1];
-
-
-	is_bin_search_tree = isBinSearchTreeOptimal(root, int_min, int_max);
-	printf("third config isBinarySearchTree %d\n", is_bin_search_tree);
-
-  for (int i = 0; i < created_nodes.size(); i++) {
-    delete created_nodes[i];
-  }
-
+    Node root;
+    root->data = 0;
+    Node left1;
+    root->left = &left;
+    left1->data = 1;
+    left1->parent = &root;
+    Node right2;
+    right2->data =2;
+    right2->parent = &root;
+    root->right = &right;
+    Node left21;
+    left21->data = 3;
+    left1->left = &left21;
+    Node left22;
+    left22->data= 4;
+    left1->right = &left22;
+    
+    Node next = findNextInOrderNode(right2);
+    if (next != nullptr) printf("%d\n", next->data) else printf("nullptr\n");
 }
