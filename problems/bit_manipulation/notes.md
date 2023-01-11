@@ -112,3 +112,12 @@ int updateBit(int num, int i, int v)
 	
 }
 ```
+
+# Hex sometimes more convenient when hardcoding masks
+hex is groups of 4 bits
+0-9, then A-F. A 10, F 15.
+
+0xA = 10 = 1010
+0xF = 15 = 1111
+
+0x5 = 5 = 0101
