@@ -19,3 +19,5 @@
 * Plan all code in design before start typing
 * ask questions after about what company does. What they work on. Release process. Day to day. Ect.
 * practice to self on zoom
+* for bit operations, pay attention to order of operations. use paranthesis liberally...
+* for bit operations, if doing graphics stuff index for graphic is opposite lsb index. so make sure to shift whichever you need.
