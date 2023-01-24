@@ -1,0 +1,21 @@
+/*
+
+write a method to print last k lines of an input file using c++
+
+we could read the file line by line into memory, keeping track of last k lines. when we go to a new line, check for end of file 
+and if so, print the last 3 lines.
+
+O(N) time where N is the number of lines in file.
+O(k) space
+
+*/
+#include <iostream>
+#include <fstream>
+#include <string>
+
+void readKLines(std::string filename, int k)
+{
+	std::ofstream file;
+	file.open(filename);
+	
+}
