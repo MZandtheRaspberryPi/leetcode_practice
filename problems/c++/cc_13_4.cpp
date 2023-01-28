@@ -72,7 +72,7 @@ int main()
 	
 	print_char_ptr(tst2.ptr);
 	delete[] ptr;
-	delete[] tst2.ptr;
+	free(tst2.ptr);
 	
 	
 	
