@@ -46,10 +46,7 @@ class SmartPointer {
 		}
 		SmartPointer& operator=(const SmartPointer& a)
 		{
-			if (*counter > 0)
-			{
-				(*counter)--;
-			}
+			remove();
 			if (this != &a)
 			{
 				obj_ptr = a.obj_ptr;
@@ -61,12 +58,7 @@ class SmartPointer {
 		
 		~SmartPointer()
 		{
-			(*counter)--;
-			if (*counter <= 0 )
-			{
-				delete obj_ptr;
-				delete counter;
-			}
+			remove();
 		}
 		
 	  
@@ -74,6 +66,14 @@ class SmartPointer {
   private:
 	  void setCounter(int counter) { this->counter = counter; }
 	  int* counter;
+		void remove() {
+			(*counter)--;
+			if (*counter <= 0 )
+			{
+				delete obj_ptr;
+				delete counter;
+			}
+		}
 		T* obj_ptr;
 		SmartPointer* orig_ptr;
 };
