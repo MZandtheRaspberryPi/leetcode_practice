@@ -21,3 +21,4 @@
 * practice to self on zoom
 * for bit operations, pay attention to order of operations. use paranthesis liberally...
 * for bit operations, if doing graphics stuff index for graphic is opposite lsb index. so make sure to shift whichever you need.
+* for linked lists, pay attention to nth from end. is end included, ie 1 is remove end. also, if list is 2, and remove 2 from end, want to remove head. so catch that case.
