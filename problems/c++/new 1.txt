@@ -1,0 +1,24 @@
+/*
+why does a desctructor in a base class need to be declared virtual?
+
+to ensure that the appropriate destructor for an object is called, by ensuring a vtable 
+is created and derived classes call their destructors, then the base class destructor.
+
+else in a scenario like the below, we may not call the derived class destructor.
+
+class Base {
+
+	~Base(){}
+
+};
+
+class Derived : public Base {
+
+	~Derived() {}
+
+};
+
+Base* foo = new Derived();
+delete foo;
+
+*/
