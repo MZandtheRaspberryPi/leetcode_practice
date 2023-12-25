@@ -34,8 +34,6 @@ int** alloc_2d_arr(int num_rows, int num_cols)
 	int** mem_start = (int**)malloc(bytes_to_alloc);
 	if (mem_start == NULL) return NULL;
 	
-	
-	
 	for (int i = 0; i < num_rows; i++)
 	{
 		mem_start[i] = (int*)(mem_start[(num_rows + 1) * num_cols]);
